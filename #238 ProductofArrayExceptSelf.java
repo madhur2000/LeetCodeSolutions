@@ -1,6 +1,8 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         
+//         Approach-1: Brute Force
+        
 //         int[] answer = new int[nums.length];
         
 //         for(int i=0; i<nums.length; i++){
@@ -16,7 +18,7 @@ class Solution {
 //         return answer;
         
         
-        
+//         Approach-2: optimized
         int[] answer = new int[nums.length];
         
         int p=1;
@@ -27,14 +29,6 @@ class Solution {
         answer[0] = p;
         
         for(int i=1; i<nums.length; i++){
-            
-            // int p = 1;
-            // for(int j=0; j<nums.length; j++){
-            //     if(j != i){
-            //         p = p * nums[j];
-            //     }
-            // }
-            // answer[i] = p;
             
             if(nums[i] != 0){
                 answer[i] = (answer[i-1] / nums[i]) * nums[i-1];
@@ -52,22 +46,5 @@ class Solution {
         }
         return answer;
         
-        
-//         int[] storage = new int[nums.length];
-        
-//         return productExceptSelfM(nums, storage);
-        
-    }
-    
-//     public static int[] productExceptSelfM(int[] nums, int[] storage){
-        
-//         if(nums.length == 2){
-//             storage[0] = nums[1];
-//             return storage;
-//         }
-        
-//         if()
-        
-//     }
     
 }
