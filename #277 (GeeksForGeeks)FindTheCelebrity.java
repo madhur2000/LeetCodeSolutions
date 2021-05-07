@@ -35,25 +35,45 @@ class Solution
     int celebrity(int M[][], int n)
     {
         
-        HashSet<Integer> hashSet = rowsWithAllZeroes(M);
+        // HashSet<Integer> hashSet = rowsWithAllZeroes(M);
         
-        for(Integer k : hashSet){
+        // for(Integer k : hashSet){
             
-            // System.out.println(k);
+        //     // System.out.println(k);
             
-            boolean isCeleb = true;
+        //     boolean isCeleb = true;
             
-            for(int i=0; i<n; i++){
-                if(i != k && M[i][k] != 1){
-                    isCeleb = false;
-                    break;
-                }
+        //     for(int i=0; i<n; i++){
+        //         if(i != k && M[i][k] != 1){
+        //             isCeleb = false;
+        //             break;
+        //         }
+        //     }
+        //     if(isCeleb){
+        //         return k;
+        //     }
+        // }
+        // return -1;
+        
+        int celeb = 0;
+        
+        for(int i=1; i<n; i++){
+            
+            if(M[celeb][i] == 1){
+                celeb = i;
             }
-            if(isCeleb){
-                return k;
-            }
+            
         }
-        return -1;
+        
+        for(int i=0; i<n; i++){
+            
+            if(i != celeb && M[i][celeb] != 1 || M[celeb][i] == 1){
+                return -1;
+            }
+            
+        }
+        return celeb;
+        
     }
     
     public static HashSet<Integer> rowsWithAllZeroes(int[][] M){
