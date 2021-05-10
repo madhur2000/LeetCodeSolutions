@@ -75,48 +75,48 @@ class Solution {
         
     }
     
-    public static int helper(String s, int start, int end, int[][] storage){
+//     public static int helper(String s, int start, int end, int[][] storage){
         
-        if(start > end)
-            return 0;
-        if(start == end){
-            storage[start][end] = 1;
-            return storage[start][end];
-        }
+//         if(start > end)
+//             return 0;
+//         if(start == end){
+//             storage[start][end] = 1;
+//             return storage[start][end];
+//         }
         
-        if(containsAllDistinctChars(s.substring(start, end+1))){
-            storage[start][end] = s.substring(start, end+1).length();
-            return storage[start][end];
-        }
+//         if(containsAllDistinctChars(s.substring(start, end+1))){
+//             storage[start][end] = s.substring(start, end+1).length();
+//             return storage[start][end];
+//         }
         
-        if(storage[start][end] != 0)
-            return storage[start][end];
+//         if(storage[start][end] != 0)
+//             return storage[start][end];
         
-        int sa1 = helper(s, start+1, end, storage);
-        storage[start+1][end] = sa1;
+//         int sa1 = helper(s, start+1, end, storage);
+//         storage[start+1][end] = sa1;
         
-        int sa2 = helper(s, start, end-1, storage);
-        storage[start][end-1] = sa2;
+//         int sa2 = helper(s, start, end-1, storage);
+//         storage[start][end-1] = sa2;
         
-        storage[start][end] = Math.max(sa1, sa2);
-        return storage[start][end];
+//         storage[start][end] = Math.max(sa1, sa2);
+//         return storage[start][end];
         
-    }
+//     }
     
     
-    public static boolean containsAllDistinctChars(String s){
+//     public static boolean containsAllDistinctChars(String s){
         
-        HashSet<Character> hs = new HashSet<>();
+//         HashSet<Character> hs = new HashSet<>();
         
-        for(int i=0; i<s.length(); i++){
-            hs.add(s.charAt(i));
-        }
+//         for(int i=0; i<s.length(); i++){
+//             hs.add(s.charAt(i));
+//         }
         
-        if(hs.size() == s.length()){
-            return true;
-        }
-        return false;
+//         if(hs.size() == s.length()){
+//             return true;
+//         }
+//         return false;
         
-    }
+//     }
     
 }
