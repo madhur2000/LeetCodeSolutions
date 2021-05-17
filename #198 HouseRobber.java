@@ -2,12 +2,12 @@ class Solution {
     public int rob(int[] nums) {
         
 //         Approach-2: Memoization
-        int[][] storage = new int[nums.length][nums.length];
-        for(int[] arr : storage){
-            Arrays.fill(arr, -1);
-        }
+//         int[][] storage = new int[nums.length][nums.length];
+//         for(int[] arr : storage){
+//             Arrays.fill(arr, -1);
+//         }
         
-        return robM(nums, 0, nums.length-1, storage);
+//         return robM(nums, 0, nums.length-1, storage);
         
 //         Approach-1: Recursion
         
@@ -21,6 +21,21 @@ class Solution {
 //         sum2 += helper(nums, start+3, end);
         
 //         return Math.max(sum1, sum2);
+        
+        
+        
+//         Approach-3: DP
+        
+        int[] storage = new int[nums.length+1];
+        storage[0] = 0;
+        storage[1] = nums[0];
+        
+        for(int i=2; i<storage.length; i++){
+            
+            storage[i] = Math.max(storage[i-1], storage[i-2] + nums[i-1]);
+            
+        }
+        return storage[nums.length];
         
     }
     
