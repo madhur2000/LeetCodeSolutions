@@ -2,7 +2,7 @@ class Solution {
     public int calculate(String s) {
         
         int i=0;
-        Stack<String> st = new Stack<>();
+        ArrayDeque<String> st = new ArrayDeque<>();
         
         while(i < s.length()){
             String operator = "";
@@ -18,7 +18,7 @@ class Solution {
                 i++;
             }
             
-            if(!st.empty() && st.peek().equals("*")){
+            if(!st.isEmpty() && st.peek().equals("*")){
                 st.pop();
                 String num1String = st.pop().trim();
                 // if(!st.empty() && st.peek().equals("-")){
@@ -31,7 +31,7 @@ class Solution {
                 st.push((num1 * num2) + "");
                 
             }
-            else if(!st.empty() && st.peek().equals("/")){
+            else if(!st.isEmpty() && st.peek().equals("/")){
                 st.pop();
                 String num1String = st.pop().trim();
                 // if(!st.empty() && st.peek().equals("-")){
@@ -59,11 +59,11 @@ class Solution {
         
         int sum = 0;
         
-        while(!st.empty()){
+        while(!st.isEmpty()){
             
             String numString = st.pop().trim();
             
-            if(!st.empty() && st.pop().equals("-")){
+            if(!st.isEmpty() && st.pop().equals("-")){
                 numString = "-" + numString;
             }
             
