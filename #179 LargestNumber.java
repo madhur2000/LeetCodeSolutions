@@ -47,8 +47,16 @@ class Solution {
         
 //         return ans;
         
+        if(nums == null || nums.length == 0)
+            return "";
+        
+        if(nums.length == 1)
+            return nums[0]+"";
         
         mySort(nums, nums.length-2);
+        
+        if(nums[0] == 0)
+            return "0";
         
         String str = "";
         
@@ -58,15 +66,19 @@ class Solution {
             
         }
         
-        String option1 = str;
-        String option2 = nums[nums.length-1];
-        
+        String option1="";
         
         if(!str.equals("0"))
             option1 = str + nums[nums.length-1];
+        else
+            option1 = nums[nums.length-1] + "";
+        
+        String option2 = "";
         
         if(nums[nums.length-1] != 0)
             option2 = nums[nums.length-1] + str;
+        else
+            option2 = str;
         
         BigInteger b1 = new BigInteger(option1);
         BigInteger b2 = new BigInteger(option2);
