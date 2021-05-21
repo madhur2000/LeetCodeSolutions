@@ -17,53 +17,72 @@ class Solution {
         
 //         Approach-3: DP(top-down)
         
-        int m = matrix.length;
-        int n = matrix[0].length;
+//         int m = matrix.length;
+//         int n = matrix[0].length;
         
-        boolean[][] storage = new boolean[m][n];
+//         boolean[][] storage = new boolean[m][n];
         
-        if(matrix[m-1][n-1] == target){
-            return true;
-        }
-        else{
-            storage[m-1][n-1] = false;
-        }
+//         if(matrix[m-1][n-1] == target){
+//             return true;
+//         }
+//         else{
+//             storage[m-1][n-1] = false;
+//         }
         
-        for(int i=n-2; i>=0; i--){
+//         for(int i=n-2; i>=0; i--){      //filling last row
             
-            if(matrix[m-1][i] == target){
+//             if(matrix[m-1][i] == target){
+//                 return true;
+//             }
+//             else{
+//                 storage[m-1][i] = storage[m-1][i+1];
+//             }
+            
+//         }
+        
+//         for(int i=m-2; i>=0; i--){      //filling last column
+            
+//             if(matrix[i][n-1] == target){
+//                 return true;
+//             }
+//             else{
+//                 storage[i][n-1] = storage[i+1][n-1];
+//             }
+            
+//         }
+        
+//         for(int i=m-2; i>=0; i--){
+//             for(int j=n-2; j>=0; j--){
+                
+//                 if(matrix[i][j] == target)
+//                     return true;
+//                 else{
+//                     storage[i][j] = (storage[i][j+1] || storage[i+1][j] 
+//                                      || storage[i+1][j+1]);
+//                 }
+                
+//             }
+//         }
+//         return storage[0][0];
+        
+        
+//         Approach-4: https://www.youtube.com/watch?v=Ohke9-qwAKU
+        
+        int m = 0;
+        int n = matrix[0].length-1;
+        
+        while(m < matrix.length && n >= 0){
+            if(matrix[m][n] == target){
                 return true;
             }
-            else{
-                storage[m-1][i] = storage[m-1][i+1];
-            }
-            
-        }
-        
-        for(int i=m-2; i>=0; i--){
-            
-            if(matrix[i][n-1] == target){
-                return true;
+            else if(matrix[m][n] < target){
+                m++;
             }
             else{
-                storage[i][n-1] = storage[i+1][n-1];
-            }
-            
-        }
-        
-        for(int i=m-2; i>=0; i--){
-            for(int j=n-2; j>=0; j--){
-                
-                if(matrix[i][j] == target)
-                    return true;
-                else{
-                    storage[i][j] = (storage[i][j+1] || storage[i+1][j] 
-                                     || storage[i+1][j+1]);
-                }
-                
+                n--;
             }
         }
-        return storage[0][0];
+        return false;
         
     }
     
