@@ -1,6 +1,8 @@
 class Solution {
     public double findMedianSortedArrays(int[] num1, int[] num2) {
         
+//         Approach-1: Naive Solution, O(m+n)
+        
 //         int i=0, j=0;
         
 //         int m = num1.length, n = num2.length;
@@ -35,7 +37,8 @@ class Solution {
 //         return num3[num3.length/2];
         
         
-//         Approach-2:
+        
+//         Approach-2: (slightly better than the naive solution, but time complexity is same i.e. O(m+n))
         
         
         int i=0, j=0;
