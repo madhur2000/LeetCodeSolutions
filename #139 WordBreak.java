@@ -42,3 +42,67 @@ class Solution {
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// Revision Session:
+
+// class Solution {
+//     public boolean wordBreak(String s, List<String> wordDict) {
+        
+// //         if(wordDict.contains(s))
+// //             return true;
+        
+// //         for(int i=1; i<s.length(); i++){
+// //             if(wordDict.contains(s.substring(i)) 
+// //                 && wordBreak(s.substring(0, i), wordDict))
+// //                 return true;
+// //         }
+        
+// //         return false;
+        
+//         int[] storage = new int[s.length()];
+        
+//         Arrays.fill(storage, -1);
+        
+//         return helper(s, wordDict, storage);
+        
+//     }
+    
+//     public static boolean helper(String s, List<String> wordDict, int[] storage){
+        
+//         if(wordDict.contains(s)){
+//             storage[s.length() - 1] = 1;
+//             return true;
+//         }
+        
+//         if(storage[s.length() - 1] != -1)
+//             return (storage[s.length() - 1] == 1) ? true : false;
+        
+//         for(int i=1; i<s.length(); i++){
+            
+//             if(wordDict.contains(s.substring(i)) 
+//                 && helper(s.substring(0, i), wordDict, storage)){
+                
+//                 storage[s.length() - 1] = 1;
+//                 return true;
+                
+//             }
+            
+//         }
+        
+//         storage[s.length() - 1] = 0;
+//         return false;
+//     }
+    
+// }
+
