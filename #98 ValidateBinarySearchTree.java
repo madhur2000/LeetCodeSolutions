@@ -69,3 +69,95 @@ class Solution {
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Revision Session: (The best solution ahead)
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+
+class Triplet{
+    int max = Integer.MIN_VALUE;
+    int min = Integer.MAX_VALUE;
+    boolean isBST = false;
+}
+
+
+class Solution {
+    public boolean isValidBST(TreeNode root) {
+        return helper(root).isBST;
+    }
+    
+    public static Triplet helper(TreeNode root){
+        
+        if(root == null){
+            Triplet ans = new Triplet();
+            ans.max = Integer.MIN_VALUE;
+            ans.min = Integer.MAX_VALUE;
+            ans.isBST = true;
+            return ans;
+        }
+        
+        Triplet leftAns = helper(root.left);
+        Triplet rightAns = helper(root.right);
+        
+        if((root.left != null && leftAns.max >= root.val) 
+            || (root.right != null && rightAns.min <= root.val)){
+            Triplet ans = new Triplet();
+            ans.max = Math.max(root.val, Math.max(leftAns.max, rightAns.max));
+            ans.min = Math.min(root.val, Math.min(leftAns.min, rightAns.min));
+            ans.isBST = false;
+            return ans;
+        }
+        
+        if(leftAns.isBST && rightAns.isBST){
+            Triplet ans = new Triplet();
+            ans.max = Math.max(root.val, Math.max(leftAns.max, rightAns.max));
+            ans.min = Math.min(root.val, Math.min(leftAns.min, rightAns.min));
+            ans.isBST = true;
+            return ans;
+        }
+        
+        Triplet ans = new Triplet();
+        ans.max = Math.max(root.val, Math.max(leftAns.max, rightAns.max));
+        ans.min = Math.min(root.val, Math.min(leftAns.min, rightAns.min));
+        ans.isBST = false;
+        return ans;
+        
+    }
+    
+}
+
+
+
+
+
+
+
+
