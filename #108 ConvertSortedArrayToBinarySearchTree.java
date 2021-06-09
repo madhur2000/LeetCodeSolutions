@@ -28,7 +28,7 @@ class Solution {
         if(start == end)
             return new TreeNode(nums[start]);
         
-        int mid = (start + end)/2;
+        int mid = start + (end-start)/2;
         
         TreeNode root = new TreeNode(nums[mid]);
         
