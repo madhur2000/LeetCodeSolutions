@@ -131,9 +131,25 @@ class Solution {
         HashMap<String, List<String>> hm = new HashMap<>();
         
         for(String s : strs){
-            char[] temp = s.toCharArray();
-            Arrays.sort(temp);
-            String sorted_s = new String(temp);
+//             char[] temp = s.toCharArray();
+//             Arrays.sort(temp);
+//             String sorted_s = new String(temp);
+            
+            int[] charCounts = new int[26];
+            String sorted_s = "";
+            
+            for(int i=0; i<s.length(); i++){
+                charCounts[s.charAt(i) - 'a']++;
+            }
+            
+            for(int i=0; i<charCounts.length; i++){
+                if(charCounts[i] != 0){
+                    char ch = (char)(i + 'a');
+                    while(charCounts[i]-- > 0){
+                        sorted_s += ch;
+                    }
+                }
+            }
             
             if(!hm.containsKey(sorted_s)){
                 hm.put(sorted_s, new ArrayList<>(Arrays.asList(s)));
