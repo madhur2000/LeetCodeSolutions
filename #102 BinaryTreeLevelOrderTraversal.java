@@ -23,7 +23,6 @@ class Solution {
         List<List<Integer>> ans = new ArrayList<>();
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
-        q.add(null);
         
         while(!q.isEmpty()){
             List<Integer> al = new ArrayList<>();
@@ -31,17 +30,13 @@ class Solution {
             
             while(n-- > 0){
                 TreeNode removed = q.remove();
-                if(removed != null){
-                    al.add(removed.val);
-                    if(removed.left != null)
-                        q.add(removed.left);
-                    if(removed.right != null)
-                        q.add(removed.right);
-                }
-                else{
-                    if(!q.isEmpty())
-                        q.add(null);
-                }
+                // if(removed != null){
+                al.add(removed.val);
+                if(removed.left != null)
+                    q.add(removed.left);
+                if(removed.right != null)
+                    q.add(removed.right);
+                
             }
             ans.add(al);
         }
