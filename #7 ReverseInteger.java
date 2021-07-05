@@ -1,52 +1,31 @@
-import java.math.BigInteger;
 class Solution {
     public int reverse(int x) {
         
-        if(x == 0)
-            return 0;
+//         boolean isNegative = false;
         
-        String s = Integer.toString(x);
+//         if(x < 0){
+//             x = 0 - x;
+//             isNegative = true;
+//         }
         
-        boolean isNegative = false;
+        int rev = 0;
+        int prevRev = 0;
         
-        if(s.charAt(0) == '-'){
+        while(x != 0){
+            rev = rev * 10 + x%10;
             
-            isNegative = true;
-            s = s.substring(1);
+            // System.out.println(x%10);
             
-        }
-        
-        int index = s.length() - 1;
-        
-        while(index >= 0 && s.charAt(index) == '0'){
-            index--;
-        }
-        
-        s = s.substring(0, index + 1);
-        
-        StringBuilder sb = new StringBuilder(s);
-        
-        sb.reverse();
-        
-        String ansString = "";
-        
-        if(isNegative){
-            ansString = "-" + sb.toString();
-        }
-        else{
-            ansString = sb.toString();
-        }
-        
-        BigInteger bi = new BigInteger(ansString);
-        BigInteger max = new BigInteger(String.valueOf(Integer.MAX_VALUE));
-        BigInteger min = new BigInteger(String.valueOf(Integer.MIN_VALUE));
-        
-        if(bi.compareTo(max) > 0
-            || bi.compareTo(min) < 0){
+            if((rev - x%10)/10 != prevRev)
+                return 0;
             
-            return 0;
-            
+            prevRev = rev;
+            x /= 10;
         }
-        return Integer.parseInt(bi.toString());
+        
+        // return isNegative ? (0 - rev) : rev;
+        
+        return rev;
+        
     }
 }
